@@ -21,7 +21,7 @@ from selenium.webdriver.common.by import By
 class GoogleReviews:
 
     def __init__(self):
-        self.review_url = 'https://www.google.com/maps/place/%D0%A3%D0%BB%D1%83%D1%83-%D0%A2%D0%BE%D0%BE/@42.8834923,74.5868375,15.77z/data=!4m5!3m4!1s0x389ec933bd943621:0x18ab7a9e283eaf18!8m2!3d42.8844016!4d74.5792839'
+        self.review_url = 'https://www.google.com/maps/place/%D0%98%D1%85%D0%BB%D0%B0%D1%81/@42.8918527,74.5957665,18z/data=!4m5!3m4!1s0x389eb7fc30208081:0xc28966628e773f69!8m2!3d42.8919982!4d74.5967493'
         # self.review_url = review_url
         self.url = 'https://accounts.google.com/ServiceLogin'
         self.options = uc.ChromeOptions()
@@ -31,7 +31,7 @@ class GoogleReviews:
     def get_page(self):
         self.driver.get(self.url)
 
-    def login(self, email, password):
+    def login(self):
         # logger.info('Google login ')
         print('Google login')
         self.wait_element_for_send(self.driver, By.NAME, 'identifier', 'valerija.korolevat2nd0@gmail.com')
@@ -43,7 +43,58 @@ class GoogleReviews:
         time.sleep(5)
         self.wait_element_for_click(self.driver, By.ID, 'passwordNext')
         print('Google enter password ')
+    def get_review_page(self):
+        self.driver.get(self.review_url)
+        time.sleep(5)
 
+    def open_review(self):
+        time.sleep(5)
+        buttons = self.driver.find_elements(By.CLASS_NAME, 'S9kvJb')
+        # logger.info('Open google maps')
+        print('open google maps')
+        time.sleep(5)
+        language = self.driver.execute_script("return window.navigator.userLanguage || window.navigator.language")
+        # logger.info(f'{language}')
+        button = self.get_button(buttons)
+        # logger.info(f'{button} to click')
+        time.sleep(2)
+        self.click_on_button(button)
+        # logger.info('Click on button to leave review')
+        print('click on button')
+        time.sleep(3)
+        self.switch_to_iframe(self.driver, By.NAME, 'goog-reviews-write-widget')
+        time.sleep(2)
+        self.wait_element_for_click(self.driver, By.XPATH, '//*[@id="kCvOeb"]/div[1]/div[3]/div/div[2]/div/div[5]')
+        time.sleep(3)
+        self.wait_element_for_click(self.driver, By.XPATH, '//*[@id="ZRGZAf"]/span')
+        # logger.info('Review created')
+
+    def click_on_button(self, button):
+        attempts = 20
+        while attempts:
+            try:
+                button.click()
+                return True
+            except:
+                attempts -= 1
+                time.sleep(1)
+        raise 'Cant click on button'
+    def get_button(self,buttons):
+        attempts = 20
+        while attempts:
+            try:
+                for button in buttons:
+                    review = button.get_attribute('data-value')
+                    if review == 'Оставить отзыв':
+                        time.sleep(1)
+                        return button
+                    elif review == 'Write a review':
+                        time.sleep(1)
+                        return button
+            except:
+                attempts -= 1
+                time.sleep(1)
+        raise 'No found required button'
     def wait_element_for_send(self,driver, by, element, data):
         attempts = 20
         while attempts:
@@ -78,4 +129,8 @@ if __name__ == "__main__":
     obj.get_page()
     time.sleep(5)
     obj.login()
+    time.sleep(5)
+    obj.get_review_page()
+    time.sleep(5)
+    obj.open_review()
     print('Account login 200')
