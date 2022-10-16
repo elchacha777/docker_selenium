@@ -36,6 +36,7 @@ COPY test.py .
 # Set display port and dbus env to avoid hanging
 ENV DISPLAY=:99
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
+ENV PYTHONUNBUFFERED=0
 
 
 # Bash script to invoke xvfb, any preliminary commands, then invoke project
