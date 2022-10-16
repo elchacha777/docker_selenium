@@ -78,6 +78,7 @@ class GoogleReviews:
         time.sleep(3)
         self.wait_element_for_click(self.driver, By.XPATH, '//*[@id="ZRGZAf"]/span')
         # logger.info('Review created')
+        print('rewview created')
 
     def click_on_button(self, button):
         attempts = 20
@@ -146,7 +147,7 @@ if __name__ == "__main__":
         time.sleep(5)
         obj.get_review_page()
         time.sleep(5)
-        # obj.open_review()
+        obj.open_review()
         print('Account login 200')
         obj.close_context()
     except Exception as e:
