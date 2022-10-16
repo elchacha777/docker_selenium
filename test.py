@@ -127,6 +127,9 @@ class GoogleReviews:
                 time.sleep(1)
         raise 'Error while wait_element_for_click'
 
+    def close_context(self):
+        self.driver.quit()
+
 if __name__ == "__main__":
     obj = GoogleReviews()
     time.sleep(5)
@@ -138,3 +141,4 @@ if __name__ == "__main__":
     time.sleep(5)
     obj.open_review()
     print('Account login 200')
+    obj.close_context()
