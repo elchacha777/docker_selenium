@@ -56,7 +56,7 @@ class GoogleReviews:
         time.sleep(5)
 
     def open_review(self):
-        time.sleep(5)
+        time.sleep(10)
         buttons = self.driver.find_elements(By.CLASS_NAME, 'S9kvJb')
         # print(self.driver.find_element(By.XPATH, '//*[@id="headingSubtext"]/span').text)
         # logger.info('Google login ')
@@ -144,8 +144,8 @@ if __name__ == "__main__":
         time.sleep(5)
         obj.login()
         time.sleep(5)
-        # obj.get_review_page()
-        # time.sleep(5)
+        obj.get_review_page()
+        time.sleep(5)
         # obj.open_review()
         print('Account login 200')
         obj.close_context()
