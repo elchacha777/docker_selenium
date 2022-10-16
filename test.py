@@ -42,11 +42,11 @@ class GoogleReviews:
         self.wait_element_for_send(self.driver, By.NAME, 'Passwd', 'W6r4YejgMoRh7vu')
         time.sleep(5)
         self.wait_element_for_click(self.driver, By.ID, 'passwordNext')
-        print('Google enter password ')
-        time.sleep(5)
-        text = self.driver.find_element(By.XPATH,
-        '//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/c-wiz/c-wiz/div/div[3]/div/div/header/h1').text
-        print(text)
+        # print('Google enter password ')
+        # time.sleep(5)
+        # text = self.driver.find_element(By.XPATH,
+        # '//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/c-wiz/c-wiz/div/div[3]/div/div/header/h1').text
+        # print(text)
     def get_review_page(self):
         self.driver.get(self.review_url)
         time.sleep(5)
