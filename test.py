@@ -53,7 +53,8 @@ class GoogleReviews:
         print(text)
     def get_review_page(self):
         self.driver.get(self.review_url)
-        print('sadasdasdasd')
+        print('entered to rieviews url')
+
         time.sleep(5)
 
     def open_review(self):
@@ -148,7 +149,7 @@ if __name__ == "__main__":
         time.sleep(5)
         obj.get_review_page()
         time.sleep(5)
-        obj.open_review()
+        # obj.open_review()
         print('Account login 200')
         obj.close_context()
     except Exception as e:
