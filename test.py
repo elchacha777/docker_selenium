@@ -21,7 +21,7 @@ from selenium.webdriver.common.by import By
 class GoogleReviews:
 
     def __init__(self):
-        self.review_url = 'https://www.google.com/maps/place/%D0%98%D1%85%D0%BB%D0%B0%D1%81/@42.8918527,74.5957665,18z/data=!4m5!3m4!1s0x389eb7fc30208081:0xc28966628e773f69!8m2!3d42.8919982!4d74.5967493'
+        self.review_url = 'https://www.google.com/maps/place/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD+%D0%9A%D0%90%D0%A3%D0%A1%D0%90%D0%A0/@42.8915112,74.5909522,14.21z/data=!4m13!1m7!3m6!1s0x389ec7ffb9cbd6b9:0x9616d4cf9871ceda!2z0JjRhdC70LDRgSwg0J_RgNC-0YTQtdGB0YHQvtGA0LAg0JfQuNC80YssINCR0LjRiNC60LXQug!3b1!8m2!3d42.8978824!4d74.5912702!3m4!1s0x0:0x9cf6f753310c0704!8m2!3d42.8853328!4d74.6142781'
         # self.review_url = review_url
         self.url = 'https://accounts.google.com/ServiceLogin'
         self.options = uc.ChromeOptions()
@@ -53,6 +53,7 @@ class GoogleReviews:
         print(text)
     def get_review_page(self):
         self.driver.get(self.review_url)
+        print('sadasdasdasd')
         time.sleep(5)
 
     def open_review(self):
