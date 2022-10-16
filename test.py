@@ -34,6 +34,9 @@ class GoogleReviews:
     def login(self):
         # logger.info('Google login ')
         print('Google login')
+        time.sleep(3)
+        print(self.driver.find_element(By.XPATH, '//*[@id="headingSubtext"]/span').text)
+
         self.wait_element_for_send(self.driver, By.NAME, 'identifier', 'valerija.korolevat2nd0@gmail.com')
         time.sleep(5)
         self.wait_element_for_click(self.driver, By.ID, 'identifierNext')
@@ -54,7 +57,7 @@ class GoogleReviews:
     def open_review(self):
         time.sleep(5)
         buttons = self.driver.find_elements(By.CLASS_NAME, 'S9kvJb')
-        print(self.driver.find_element(By.XPATH, '//*[@id="headingSubtext"]/span').text)
+        # print(self.driver.find_element(By.XPATH, '//*[@id="headingSubtext"]/span').text)
         # logger.info('Google login ')
         # logger.info('Open google maps')
         print('open google maps')
