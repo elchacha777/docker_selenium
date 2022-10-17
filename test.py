@@ -25,7 +25,10 @@ class GoogleReviews:
         # self.review_url = review_url
         self.url = 'https://accounts.google.com/ServiceLogin'
         self.options = uc.ChromeOptions()
-        self.options.arguments.extend(["--no-sandbox", "--disable-setuid-sandbox", '--disable-dev-shm-usage', '--disable-extensions'])
+        self.options.add_argument("--no-sandbox")
+        self.options.add_argument("--disable-setuid-sandbox")
+        self.options.add_argument("--disable-extensions")
+        # self.options.arguments.extend(["--no-sandbox", "--disable-setuid-sandbox", '--disable-dev-shm-usage', '--disable-extensions'])
         self.driver = uc.Chrome(use_subprocess=True, options=self.options)
 
     def get_page(self):
@@ -152,7 +155,7 @@ if __name__ == "__main__":
         time.sleep(5)
         obj.get_review_page()
         time.sleep(5)
-        # obj.open_review()
+        obj.open_review()
         print('Account login 200')
         obj.close_context()
     except Exception as e:
