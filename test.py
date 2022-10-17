@@ -152,7 +152,7 @@ if __name__ == "__main__":
         time.sleep(5)
         obj.get_review_page()
         time.sleep(5)
-        obj.open_review()
+        # obj.open_review()
         print('Account login 200')
         obj.close_context()
     except Exception as e:
